@@ -1,0 +1,25 @@
+# Environment / secrets
+.env
+.env.local
+*.env
+!.env.example
+
+# Backend (Python)
+backend/.venv/
+__pycache__/
+**/__pycache__/
+*.pyc
+.pytest_cache/
+celerybeat-schedule
+*.egg-info/
+
+# Frontend (Node)
+frontend/node_modules/
+frontend/dist/
+npm-debug.log*
+
+# Editors / OS
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db

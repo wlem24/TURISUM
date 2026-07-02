@@ -1,0 +1,36 @@
+{
+  "app_name": "Athar",
+  "tagline": "Discover what time left behind",
+  "nav": {
+    "explore": "Explore",
+    "guides": "Guides",
+    "hotels": "Hotels",
+    "ai_explorer": "AI Explorer",
+    "login": "Login",
+    "register": "Sign Up Free",
+    "logout": "Logout",
+    "profile": "My Profile",
+    "bookings": "My Bookings",
+    "dashboard": "Dashboard",
+    "add_spot": "+ Add Spot"
+  },
+  "spots": {
+    "title": "Discover Hidden Spots",
+    "submit": "Submit a Tourist Spot",
+    "pending": "Pending Review",
+    "approved": "Approved",
+    "rejected": "Rejected",
+    "easy": "Easy",
+    "medium": "Medium",
+    "hard": "Hard"
+  },
+  "common": {
+    "save": "Save",
+    "cancel": "Cancel",
+    "loading": "Loading...",
+    "error": "An error occurred",
+    "success": "Success",
+    "required": "This field is required",
+    "back": "Back"
+  }
+}

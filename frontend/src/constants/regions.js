@@ -1,0 +1,15 @@
+export const REGIONS = [
+  { id: "riyadh", name_ar: "الرياض", name_en: "Riyadh", lat: 24.7136, lng: 46.6753 },
+  { id: "makkah", name_ar: "مكة المكرمة", name_en: "Makkah", lat: 21.3891, lng: 39.8579 },
+  { id: "madinah", name_ar: "المدينة المنورة", name_en: "Madinah", lat: 24.5247, lng: 39.5692 },
+  { id: "eastern", name_ar: "المنطقة الشرقية", name_en: "Eastern Province", lat: 26.4207, lng: 50.0888 },
+  { id: "asir", name_ar: "عسير", name_en: "Asir", lat: 18.2164, lng: 42.5053 },
+  { id: "tabuk", name_ar: "تبوك", name_en: "Tabuk", lat: 28.3998, lng: 36.5716 },
+  { id: "hail", name_ar: "حائل", name_en: "Hail", lat: 27.5114, lng: 41.7208 },
+  { id: "qassim", name_ar: "القصيم", name_en: "Qassim", lat: 26.3268, lng: 43.9751 },
+  { id: "jazan", name_ar: "جازان", name_en: "Jazan", lat: 16.8892, lng: 42.5611 },
+  { id: "najran", name_ar: "نجران", name_en: "Najran", lat: 17.4922, lng: 44.1277 },
+  { id: "bahah", name_ar: "الباحة", name_en: "Al-Bahah", lat: 20.0129, lng: 41.4677 },
+  { id: "jouf", name_ar: "الجوف", name_en: "Al-Jouf", lat: 29.7865, lng: 39.9926 },
+  { id: "northern", name_ar: "الحدود الشمالية", name_en: "Northern Borders", lat: 30.9843, lng: 41.1184 },
+];
