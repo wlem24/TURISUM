@@ -9,32 +9,33 @@
     "lint": "eslint src --ext .js,.jsx"
   },
   "dependencies": {
-    "react": "^18.3.1",
-    "react-dom": "^18.3.1",
-    "react-router-dom": "^6.23.1",
-    "axios": "^1.7.2",
-    "zustand": "^4.5.2",
+    "@hookform/resolvers": "^3.6.0",
     "@tanstack/react-query": "^5.45.1",
-    "@react-google-maps/api": "^2.19.3",
+    "axios": "^1.7.2",
+    "clsx": "^2.1.1",
+    "date-fns": "^3.6.0",
     "i18next": "^23.11.5",
-    "react-i18next": "^14.1.2",
     "i18next-browser-languagedetector": "^8.0.0",
     "i18next-http-backend": "^2.5.2",
+    "leaflet": "^1.9.4",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
     "react-hook-form": "^7.52.0",
-    "zod": "^3.23.8",
-    "@hookform/resolvers": "^3.6.0",
     "react-hot-toast": "^2.4.1",
-    "clsx": "^2.1.1",
-    "date-fns": "^3.6.0"
+    "react-i18next": "^14.1.2",
+    "react-leaflet": "^4.2.1",
+    "react-router-dom": "^6.23.1",
+    "zod": "^3.23.8",
+    "zustand": "^4.5.2"
   },
   "devDependencies": {
     "@vitejs/plugin-react": "^4.3.1",
-    "vite": "^5.3.1",
-    "tailwindcss": "^3.4.4",
     "autoprefixer": "^10.4.19",
-    "postcss": "^8.4.38",
     "eslint": "^8.57.0",
     "eslint-plugin-react": "^7.34.3",
-    "eslint-plugin-react-hooks": "^4.6.2"
+    "eslint-plugin-react-hooks": "^4.6.2",
+    "postcss": "^8.4.38",
+    "tailwindcss": "^3.4.4",
+    "vite": "^5.3.1"
   }
 }

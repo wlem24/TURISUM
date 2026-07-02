@@ -5,7 +5,7 @@ import { spotsAPI } from "@/api/spots";
 import { useLanguage } from "@/contexts/LanguageContext";
 import Spinner from "@/components/common/Spinner";
 import Badge from "@/components/common/Badge";
-import GoogleMapView from "@/components/map/GoogleMapView";
+import SpotMapView from "@/components/map/SpotMapView";
 import { SPOT_TYPES, ACCESS_DIFFICULTY } from "@/constants/spotTypes";
 import { formatDuration, formatDistance } from "@/utils/formatters";
 
@@ -111,7 +111,7 @@ export default function SpotDetail() {
         {/* Location */}
         <div className="card p-6">
           <h2 className="section-title">{isArabic ? "الموقع الجغرافي" : "Location"}</h2>
-          <GoogleMapView
+          <SpotMapView
             lat={spot.latitude}
             lng={spot.longitude}
             title={isArabic ? spot.name_ar : (spot.name_en || spot.name_ar)}

@@ -8,7 +8,7 @@ React 18 + Vite SPA for the Athar tourism discovery platform.
 cd frontend
 npm install
 cp .env.example .env
-# Edit .env with your API URL and Google Maps key
+# Edit .env with your API URL
 npm run dev
 # Opens at http://localhost:5173
 ```
@@ -25,7 +25,6 @@ npm run build
 | Variable | Description |
 |----------|-------------|
 | `VITE_API_BASE_URL` | Backend API URL (default: `http://localhost:8000/api/v1`) |
-| `VITE_GOOGLE_MAPS_API_KEY` | Google Maps JavaScript API key |
 | `VITE_APP_NAME` | App name (default: `أثر`) |
 | `VITE_DEFAULT_LANG` | Default language: `ar` or `en` |
 
@@ -36,6 +35,7 @@ npm run build
 - **React Router v6** — Client-side routing
 - **Zustand** — Global state (auth, spots, UI)
 - **React Query** — Server state + caching
+- **Leaflet + react-leaflet** — Interactive maps via OpenStreetMap (no API key)
 - **i18next** — Arabic/English bilingual with RTL support
 - **React Hook Form + Zod** — Form validation
 - **Tailwind CSS + tailwindcss-rtl** — Styling with RTL support

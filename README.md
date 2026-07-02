@@ -80,7 +80,7 @@ Frontend (React/Vite)        Backend (FastAPI)
         │           + pgvector  (cache/queue)  Workers
         │                           │
         │                    Anthropic Claude API
-        │                    Google Maps API
+        │                    OpenStreetMap tiles
         │                    Cloudinary (images)
         │                    Moyasar (payments)
 ```
@@ -123,7 +123,7 @@ All amounts calculated with `Decimal` precision (never float).
 1. **AI Discovery Chat** — Claude claude-sonnet-4-6 bilingual tourism assistant
 2. **Smart Spot Suggestions (RAG)** — pgvector + sentence-transformers similarity search
 3. **Spot Quality Analyzer** — AI evaluates submitted spots before admin review
-4. **Google Maps Integration** — real pins for approved spots
+4. **Interactive Map** — Leaflet + OpenStreetMap pins for approved spots (no API key required)
 
 ---
 
@@ -144,7 +144,7 @@ Admin reviews in PendingSpots dashboard
 
 ## Tech Stack
 
-**Frontend:** React 18, Vite, Axios, Zustand, React Query, Google Maps, i18next (AR/EN RTL), React Hook Form + Zod, Tailwind CSS
+**Frontend:** React 18, Vite, Axios, Zustand, React Query, Leaflet (OpenStreetMap), i18next (AR/EN RTL), React Hook Form + Zod, Tailwind CSS
 
 **Backend:** FastAPI, PostgreSQL + pgvector, SQLAlchemy 2.0 async, Alembic, JWT auth, Celery + Redis, Cloudinary, Moyasar
 
