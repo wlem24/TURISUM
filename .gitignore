@@ -1,0 +1,15 @@
+# Scratch / temporary files
+scratch_*.json
+scratch_*.md
+inspect_*.txt
+
+# IDE / tool configs
+.claude/
+.opencode/
+
+# OS files
+Thumbs.db
+desktop.ini
+
+# Nested git repos (tracked separately)
+hidden-ksa/

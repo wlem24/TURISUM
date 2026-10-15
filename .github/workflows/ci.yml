@@ -1,0 +1,40 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+# Cancel in-progress runs for the same branch
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  lint-and-validate:
+    name: Lint & Validate
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Validate HTML
+        uses: nicerloop/htmlhint-action@master
+        with:
+          patterns: "**/*.html"
+
+      - name: Check for large files
+        run: |
+          # Warn if any file exceeds 10MB (keep repo lean)
+          find . -type f -size +10M -not -path './.git/*' | while read f; do
+            echo "::warning file=$f::Large file detected ($(du -h "$f" | cut -f1))"
+          done
+
+      - name: Lint commit messages
+        # Only on PRs — validates conventional commit format
+        if: github.event_name == 'pull_request'
+        uses: wagoid/commitlint-github-action@v6
+        with:
+          configFile: ''  # uses default @commitlint/config-conventional

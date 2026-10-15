@@ -1,0 +1,1398 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>أثر | Athar — Hidden Saudi Arabia</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600&family=Noto+Sans+Arabic:wght@400;500;600&family=Inter:wght@400;500;600&family=Plus+Jakarta+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    /* === ATHAR BRAND COLORS === */
+    --athar-950:#0D1F12; --athar-900:#173404; --athar-800:#27500A; --athar-700:#3B6D11;
+    --athar-600:#639922; --athar-400:#97C459; --athar-200:#C0DD97; --athar-100:#EAF3DE; --athar-50:#F5F2EC;
+    --athar-gold-dark:#412402; --athar-gold-base:#BA7517; --athar-gold-mid:#EF9F27; --athar-gold-light:#FAC775; --athar-gold-pale:#FAEEDA;
+    --status-approved:#EAF3DE; --status-approved-text:#27500A; --status-approved-dot:#639922;
+    --status-pending:#FAEEDA; --status-pending-text:#633806; --status-pending-dot:#EF9F27;
+    --status-new:#E6F1FB; --status-new-text:#185FA5; --status-new-dot:#378ADD;
+    --status-rejected:#FCEBEB; --status-rejected-text:#791F1F; --status-rejected-dot:#E24B4A;
+
+    /* === SEMANTIC (mapped to legacy var names used throughout this file) === */
+    --green:#3B6D11;         /* color-accent / primary base */
+    --green-dark:#27500A;    /* color-accent-hover / primary dark */
+    --green-light:#EAF3DE;   /* color-accent-light */
+    --gold:#FAC775;          /* CTA / highlight */
+    --gold-text:#412402;     /* text on gold CTA */
+    --gold-light:#FAEEDA;    /* gold pale bg */
+    --sand:#F5F2EC;          /* page bg — warm cream, never pure white */
+    --ink:#173404;           /* text primary */
+    --ink-soft:#3B6D11;      /* text secondary */
+    --ink-muted:#639922;     /* text muted */
+    --card:#FFFFFF;
+    --border:#C0DD97;
+    --border-strong:#97C459;
+    --danger:#791F1F;
+    --danger-bg:#FCEBEB;
+    --radius:12px;           /* card radius */
+    --radius-btn:8px;        /* button/input radius */
+    --radius-badge:6px;      /* badge radius */
+    --shadow:0 1px 3px rgba(23,52,4,0.08), 0 1px 2px rgba(23,52,4,0.04);
+    --shadow-lg:0 20px 60px rgba(13,31,18,0.3);
+
+    --font-arabic:'Cairo','Noto Sans Arabic',sans-serif;
+    --font-english:'Inter','Plus Jakarta Sans',sans-serif;
+  }
+  [data-theme="dark"]{
+    --sand:#0D1F12;          /* page bg */
+    --ink:#C0DD97;           /* text primary on dark */
+    --ink-soft:#97C459;      /* text secondary on dark */
+    --ink-muted:#639922;     /* text muted on dark */
+    --card:#1a3320;          /* cards on dark bg */
+    --border:#27500A;
+    --border-strong:#3B6D11;
+    --danger:#f5b3b1;
+    --danger-bg:#3a1414;
+    --shadow:0 1px 3px rgba(0,0,0,0.35), 0 1px 2px rgba(0,0,0,0.2);
+    --shadow-lg:0 20px 60px rgba(0,0,0,0.55);
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html[dir="rtl"] body{font-family:var(--font-arabic)}
+  html[dir="ltr"] body{font-family:var(--font-english)}
+  body{background:var(--sand);color:var(--ink);min-height:100vh;line-height:1.5;font-weight:400;transition:background .2s,color .2s}
+  button{font-family:inherit;cursor:pointer;border:none;background:none}
+  input,textarea,select{font-family:inherit;font-size:15px}
+  img{max-width:100%;display:block}
+  a{color:inherit}
+  ::-webkit-scrollbar{width:8px;height:8px}
+  ::-webkit-scrollbar-thumb{background:var(--athar-200);border-radius:8px}
+
+  .hidden{display:none !important}
+  .screen{min-height:100vh}
+  .container{max-width:1180px;margin:0 auto;padding:0 20px}
+
+  /* ---------- Buttons ---------- */
+  .btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:12px 22px;border-radius:var(--radius-btn);font-weight:500;font-size:15px;transition:.15s;white-space:nowrap;font-family:inherit}
+  .btn-primary{background:var(--green);color:var(--green-light)}
+  .btn-primary:hover{background:var(--green-dark)}
+  .btn-gold{background:var(--gold);color:var(--gold-text)}
+  .btn-gold:hover{filter:brightness(1.05)}
+  .btn-outline{background:transparent;border:1.5px solid var(--green);color:var(--green)}
+  .btn-outline:hover{background:var(--green-light)}
+  .btn-ghost{background:transparent;color:var(--ink-soft)}
+  .btn-ghost:hover{background:#00000008}
+  .btn-block{width:100%}
+  .btn-sm{padding:8px 14px;font-size:13px;border-radius:8px}
+  .btn:disabled{opacity:.55;cursor:not-allowed}
+
+  .field{margin-bottom:16px;text-align:start}
+  .field label{display:block;font-size:13px;font-weight:500;margin-bottom:6px;color:var(--ink-soft)}
+  .field input,.field textarea,.field select{width:100%;padding:11px 14px;border:1.5px solid var(--border);border-radius:var(--radius-btn);background:var(--card);color:var(--ink);outline:none;transition:.15s}
+  .field input:focus,.field textarea:focus,.field select:focus{border-color:var(--green)}
+  .field .hint{font-size:12px;color:var(--ink-soft);margin-top:5px}
+  .field .hint a{color:var(--green);font-weight:500;text-decoration:underline}
+
+  .card{background:var(--card);border:0.5px solid var(--border);border-radius:var(--radius);box-shadow:var(--shadow)}
+
+  /* ---------- Setup screen ---------- */
+  .setup-wrap{min-height:100vh;display:flex;align-items:center;justify-content:center;padding:32px 16px;background:radial-gradient(circle at 20% 20%,#3B6D1111,transparent 40%),radial-gradient(circle at 80% 80%,#BA751711,transparent 40%)}
+  .setup-card{width:100%;max-width:560px;background:var(--card);border-radius:var(--radius);box-shadow:var(--shadow-lg);padding:36px 32px;border:0.5px solid var(--border)}
+  .brand{display:flex;align-items:center;gap:10px;justify-content:center;margin-bottom:6px}
+  .brand-mark{display:flex;align-items:center;justify-content:center;flex-shrink:0}
+  .brand-name{font-size:26px;font-weight:500;color:var(--green-dark);font-family:var(--font-arabic)}
+  .setup-sub{text-align:center;color:var(--ink-soft);font-size:14px;margin-bottom:26px}
+  .setup-section-title{font-size:12px;font-weight:500;text-transform:uppercase;letter-spacing:.06em;color:var(--athar-gold-base);margin:22px 0 10px}
+  .badge{display:inline-block;font-size:11px;font-weight:500;padding:2px 8px;border-radius:var(--radius-badge);background:var(--green-light);color:var(--green-dark);margin-inline-start:6px}
+  .badge-optional{background:var(--athar-100);color:var(--ink-soft)}
+  .error-box{background:var(--danger-bg);border:0.5px solid var(--status-rejected-dot);color:var(--danger);padding:10px 14px;border-radius:var(--radius-btn);font-size:13px;margin-bottom:16px}
+
+  /* ---------- Auth screen ---------- */
+  .auth-wrap{min-height:100vh;display:flex}
+  .auth-side{flex:1;background:linear-gradient(160deg,var(--athar-950),var(--green) 65%);display:flex;flex-direction:column;justify-content:center;padding:60px;color:var(--athar-200);position:relative;overflow:hidden}
+  .auth-side::after{content:"";position:absolute;inset:0;background:radial-gradient(circle at 80% 10%,#FAC77522,transparent 45%)}
+  .auth-side h1{font-size:38px;font-weight:500;margin-bottom:14px;position:relative;color:var(--athar-100)}
+  .auth-side p{font-size:16px;opacity:.9;max-width:420px;position:relative}
+  .auth-form-col{flex:1;display:flex;align-items:center;justify-content:center;padding:32px}
+  .auth-box{width:100%;max-width:400px}
+  .tab-row{display:flex;background:var(--athar-100);border-radius:var(--radius-btn);padding:4px;margin-bottom:24px}
+  .tab-row button{flex:1;padding:10px;border-radius:6px;font-weight:500;font-size:14px;color:var(--ink-soft)}
+  .tab-row button.active{background:var(--card);color:var(--ink);box-shadow:var(--shadow)}
+  .divider{display:flex;align-items:center;gap:10px;margin:18px 0;color:var(--ink-soft);font-size:12px}
+  .divider::before,.divider::after{content:"";flex:1;height:0.5px;background:var(--border)}
+  @media(max-width:860px){.auth-side{display:none}}
+
+  /* ---------- App shell ---------- */
+  .app-shell{min-height:100vh;display:flex;flex-direction:column}
+  .topbar{background:var(--athar-950);border-bottom:0.5px solid var(--athar-800);position:sticky;top:0;z-index:50}
+  .topbar-inner{display:flex;align-items:center;justify-content:space-between;padding:12px 20px;max-width:1180px;margin:0 auto}
+  .topbar .brand-name{color:var(--athar-200)}
+  .topbar-actions{display:flex;align-items:center;gap:10px}
+  .lang-btn{border:1px solid var(--border);border-radius:var(--radius-btn);padding:7px 12px;font-weight:500;font-size:13px;color:var(--ink-soft);background:transparent}
+  .lang-btn:hover{border-color:var(--green);color:var(--green)}
+  .topbar .lang-btn{border-color:var(--athar-700);color:var(--athar-200)}
+  .topbar .lang-btn:hover{border-color:var(--athar-400);color:var(--athar-400)}
+  .avatar{width:36px;height:36px;border-radius:50%;background:var(--gold-light);color:var(--green-dark);display:flex;align-items:center;justify-content:center;font-weight:500;font-size:14px}
+  .user-menu{position:relative}
+  .user-dropdown{position:absolute;inset-inline-end:0;top:46px;background:var(--card);border:0.5px solid var(--border);border-radius:var(--radius);box-shadow:var(--shadow-lg);width:220px;padding:8px;z-index:60}
+  .user-dropdown button{display:block;width:100%;text-align:start;padding:10px 12px;border-radius:var(--radius-btn);font-size:14px;font-weight:500}
+  .user-dropdown button:hover{background:var(--sand)}
+
+  .tabs-nav{display:flex;gap:4px;background:var(--card);border-bottom:0.5px solid var(--border);overflow-x:auto}
+  .tabs-nav-inner{display:flex;gap:4px;max-width:1180px;margin:0 auto;padding:0 20px;width:100%}
+  .tab-item{display:flex;align-items:center;gap:7px;padding:14px 16px;font-weight:500;font-size:14px;color:var(--ink-soft);border-bottom:2px solid transparent;white-space:nowrap}
+  .tab-item.active{color:var(--ink);border-color:var(--green)}
+  .tab-item:hover{color:var(--green)}
+
+  .main-content{flex:1;padding:26px 0 60px}
+  .page-head{margin-bottom:22px}
+  .page-head h2{font-size:26px;font-weight:500;color:var(--ink);margin-bottom:6px}
+  .page-head p{color:var(--ink-soft);font-size:14px}
+
+  /* ---------- Discover ---------- */
+  .toolbar{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:22px}
+  .toolbar input[type=text]{flex:1;min-width:200px;padding:11px 16px;border-radius:var(--radius-btn);border:1.5px solid var(--border)}
+  .toolbar select{padding:11px 14px;border-radius:var(--radius-btn);border:1.5px solid var(--border);background:var(--card)}
+  .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(270px,1fr));gap:18px}
+  .spot-card{overflow:hidden;cursor:pointer;transition:.18s;display:flex;flex-direction:column}
+  .spot-card:hover{border-color:var(--border-strong);box-shadow:var(--shadow-lg)}
+  .spot-media{height:150px;position:relative;display:flex;align-items:center;justify-content:center;font-size:44px;color:#fff}
+  .spot-media .level{position:absolute;top:10px;inset-inline-start:10px;background:#00000055;backdrop-filter:blur(3px);color:#fff;font-size:11px;font-weight:500;padding:4px 9px;border-radius:var(--radius-badge)}
+  .spot-media .bmk{position:absolute;top:10px;inset-inline-end:10px;background:#ffffffdd;width:30px;height:30px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:15px}
+  .spot-body{padding:14px 16px 16px;flex:1;display:flex;flex-direction:column}
+  .spot-body h3{font-size:16px;font-weight:500;margin-bottom:4px}
+  .spot-meta{font-size:12px;color:var(--ink-soft);margin-bottom:8px;display:flex;gap:6px;align-items:center}
+  .spot-desc{font-size:13px;color:var(--ink-soft);flex:1;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+  .cat-pill{display:inline-block;font-size:11px;font-weight:500;padding:3px 9px;border-radius:var(--radius-badge);background:var(--status-approved);color:var(--status-approved-text)}
+  .cat-pill-new{background:var(--status-new);color:var(--status-new-text)}
+  .no-results{text-align:center;padding:60px 20px;color:var(--ink-soft)}
+
+  /* ---------- Modal ---------- */
+  .modal-overlay{position:fixed;inset:0;background:#0D1F1266;display:flex;align-items:flex-start;justify-content:center;padding:30px 16px;overflow-y:auto;z-index:100}
+  .modal{background:var(--card);border-radius:var(--radius);max-width:640px;width:100%;overflow:hidden;box-shadow:var(--shadow-lg)}
+  .modal-hero{height:200px;display:flex;align-items:center;justify-content:center;font-size:64px;color:#fff;position:relative}
+  .modal-close{position:absolute;top:12px;inset-inline-end:12px;background:#ffffffdd;width:34px;height:34px;border-radius:50%;font-size:18px;display:flex;align-items:center;justify-content:center}
+  .modal-body{padding:24px}
+  .modal-body h2{font-size:22px;font-weight:500;margin-bottom:6px}
+  .modal-actions{display:flex;gap:10px;margin-top:20px;flex-wrap:wrap}
+  .info-block{margin-top:16px}
+  .info-block h4{font-size:13px;font-weight:500;color:var(--athar-gold-base);text-transform:uppercase;letter-spacing:.05em;margin-bottom:6px}
+  .info-block p{font-size:14px;color:var(--ink-soft)}
+
+  /* ---------- Map ---------- */
+  #map-view{height:calc(100vh - 200px);min-height:420px;border-radius:var(--radius);overflow:hidden;border:0.5px solid var(--border)}
+  .map-fallback{height:100%;display:flex;align-items:center;justify-content:center;background:var(--green-light);color:var(--green-dark);flex-direction:column;gap:12px;text-align:center;padding:30px}
+
+  /* ---------- Chat ---------- */
+  .chat-wrap{display:flex;flex-direction:column;height:calc(100vh - 210px);min-height:440px;background:var(--card);border:0.5px solid var(--border);border-radius:var(--radius);overflow:hidden}
+  .chat-messages{flex:1;overflow-y:auto;padding:22px;display:flex;flex-direction:column;gap:14px}
+  .msg{max-width:75%;padding:12px 16px;border-radius:var(--radius);font-size:14.5px;line-height:1.6;white-space:pre-wrap}
+  .msg-user{align-self:flex-end;background:var(--green);color:var(--green-light);border-bottom-right-radius:4px}
+  html[dir="rtl"] .msg-user{border-bottom-right-radius:var(--radius);border-bottom-left-radius:4px}
+  .msg-ai{align-self:flex-start;background:var(--sand);color:var(--ink);border-bottom-left-radius:4px}
+  html[dir="rtl"] .msg-ai{border-bottom-left-radius:var(--radius);border-bottom-right-radius:4px}
+  .msg-ai.error{background:var(--danger-bg);color:var(--danger)}
+  .chat-input-row{display:flex;gap:10px;padding:16px;border-top:0.5px solid var(--border)}
+  .chat-input-row input{flex:1;padding:12px 16px;border-radius:var(--radius-btn);border:1.5px solid var(--border)}
+  .chat-suggestions{display:flex;gap:8px;flex-wrap:wrap;padding:0 22px 14px}
+  .chip{font-size:12.5px;font-weight:500;padding:7px 13px;border-radius:var(--radius-btn);background:var(--green-light);color:var(--green-dark);border:1px solid var(--border)}
+  .chip:hover{background:var(--athar-200)}
+  .typing{display:flex;gap:4px;align-self:flex-start;padding:12px 16px;background:var(--sand);border-radius:var(--radius)}
+  .typing span{width:6px;height:6px;border-radius:50%;background:var(--ink-soft);animation:blink 1.2s infinite}
+  .typing span:nth-child(2){animation-delay:.2s}.typing span:nth-child(3){animation-delay:.4s}
+  @keyframes blink{0%,80%,100%{opacity:.2}40%{opacity:1}}
+
+  /* ---------- Saved / Profile ---------- */
+  .profile-card{display:flex;align-items:center;gap:18px;padding:24px;margin-bottom:24px}
+  .profile-avatar{width:70px;height:70px;border-radius:50%;background:var(--gold-light);color:var(--green-dark);display:flex;align-items:center;justify-content:center;font-weight:500;font-size:26px}
+  .stat-row{display:flex;gap:14px;margin-top:8px}
+  .stat{font-size:13px;color:var(--ink-soft)}
+  .stat b{color:var(--ink);font-size:16px;display:block;font-weight:500}
+  .settings-list .card{padding:16px 18px;display:flex;align-items:center;justify-content:between;gap:10px;margin-bottom:10px;cursor:pointer}
+  .settings-list .card:hover{border-color:var(--green)}
+  .settings-row{display:flex;align-items:center;justify-content:space-between;width:100%}
+
+  /* ---------- Share spot form / FAB ---------- */
+  .fab{position:fixed;bottom:26px;inset-inline-end:26px;width:58px;height:58px;border-radius:50%;background:var(--gold);color:var(--gold-text);font-size:26px;display:flex;align-items:center;justify-content:center;box-shadow:var(--shadow-lg);z-index:40}
+  .fab:hover{filter:brightness(1.05)}
+  .grid-2{display:grid;grid-template-columns:1fr 1fr;gap:0 14px}
+  @media(max-width:520px){.grid-2{grid-template-columns:1fr}}
+
+  .toast{position:fixed;bottom:24px;left:50%;transform:translateX(-50%);background:var(--athar-950);color:var(--athar-200);padding:12px 22px;border-radius:var(--radius-btn);font-size:13.5px;font-weight:500;box-shadow:var(--shadow-lg);z-index:200;opacity:0;transition:.25s}
+  .toast.show{opacity:1;bottom:34px}
+
+  .spinner{width:16px;height:16px;border:2.5px solid #ffffff55;border-top-color:#fff;border-radius:50%;animation:spin .7s linear infinite;display:inline-block}
+  @keyframes spin{to{transform:rotate(360deg)}}
+</style>
+</head>
+<body>
+
+<div id="root"></div>
+<div id="toast" class="toast"></div>
+
+<script>
+/* ============================================================
+   CONFIG — API keys, persisted to localStorage
+   ============================================================ */
+const CONFIG = {
+  ANTHROPIC_API_KEY: "",
+  GOOGLE_MAPS_API_KEY: "",
+  SUPABASE_URL: "",
+  SUPABASE_KEY: "",
+};
+
+function saveConfig(){
+  localStorage.setItem('athar_config', JSON.stringify(CONFIG));
+}
+function loadConfig(){
+  const saved = localStorage.getItem('athar_config');
+  if (saved) Object.assign(CONFIG, JSON.parse(saved));
+}
+
+/* ============================================================
+   ANTHROPIC (Claude) INTEGRATION
+   ============================================================ */
+async function callClaude(messages, systemPrompt){
+  const res = await fetch("https://api.anthropic.com/v1/messages", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      "x-api-key": CONFIG.ANTHROPIC_API_KEY,
+      "anthropic-version": "2023-06-01",
+      "anthropic-dangerous-direct-browser-access": "true"
+    },
+    body: JSON.stringify({
+      model: "claude-sonnet-4-6",
+      max_tokens: 1000,
+      system: systemPrompt,
+      messages: messages
+    })
+  });
+  const data = await res.json();
+  if (!res.ok) {
+    const msg = (data && data.error && data.error.message) ? data.error.message : ("HTTP " + res.status);
+    throw new Error(msg);
+  }
+  return data.content[0].text;
+}
+
+function buildSystemPrompt(){
+  const spotList = SPOTS.map(s =>
+    `- [${s.id}] ${s.name_ar} / ${s.name_en} — ${s.region} — ${t2('en',s.category_en)}/${s.category_ar} — secrecy ${s.hidden_level}/5 — (${s.lat.toFixed(3)}, ${s.lng.toFixed(3)})\n  EN: ${s.desc_en}\n  AR: ${s.desc_ar}`
+  ).join("\n");
+
+  return `You are "أثر" (Athar) — a warm, knowledgeable Saudi local-guide AI assistant inside the Athar hidden-tourism discovery app.
+
+Mission: help travelers uncover authentic, lesser-known places in Saudi Arabia — villages, canyons, oases, mountains, heritage sites — beyond the typical tourist trail, in the spirit of Saudi Vision 2030's tourism goals.
+
+Rules:
+- Reply in the SAME language the user writes in (Arabic or English). If mixed, prefer Arabic.
+- Ground recommendations in the CURATED SPOTS list below when relevant. You may also mention well-known general knowledge about Saudi geography/culture, but prioritize the curated list for concrete recommendations.
+- Be concise (roughly 80-160 words) unless the user asks for depth. Use short paragraphs or bullet points.
+- Be practical: mention region, best season/time, and one insider tip when recommending a spot.
+- Be culturally respectful and safety-conscious (mention permits, terrain difficulty, or local customs where relevant).
+- If asked something entirely unrelated to travel/tourism in Saudi Arabia, gently steer back to how you can help them explore hidden Saudi Arabia.
+- Never invent coordinates or facts about a specific curated spot beyond what's listed — you may reasonably elaborate on general regional context.
+
+CURATED HIDDEN SPOTS:
+${spotList}`;
+}
+
+/* ============================================================
+   i18n
+   ============================================================ */
+const STR = {
+  en: {
+    appName: "Athar", appNameSub: "أثر",
+    tagline: "Discover what time left behind",
+    setupTitle: "Set up Athar",
+    setupSubtitle: "Connect your API keys to power the app. Keys are stored only in this browser's local storage.",
+    anthropicLabel: "Anthropic API Key", anthropicHelp: "Required — powers the AI travel guide chat.",
+    mapsLabel: "Google Maps API Key", mapsHelp: "Optional — enables the interactive map view.",
+    supabaseUrlLabel: "Supabase Project URL", supabaseKeyLabel: "Supabase Anon Key",
+    supabaseHelp: "Optional — enables real cloud accounts. Without it, Athar uses a local guest account on this device.",
+    required: "Required", optional: "Optional",
+    saveContinue: "Save & Continue", keyRequiredError: "Please enter your Anthropic API key to continue.",
+    getKeyAt: "Get a key at",
+    welcomeBack: "Welcome back", createAccount: "Create your account",
+    noAccount: "New to Athar?", haveAccount: "Already have an account?",
+    login: "Log in", signup: "Sign up", switchToSignup: "Sign up", switchToLogin: "Log in",
+    name: "Full name", email: "Email", password: "Password",
+    continueAsGuest: "Continue as guest", or: "or",
+    authHeroTitle: "Trace the paths locals never advertise.",
+    authHeroSub: "Athar surfaces hidden villages, canyons, oases and heritage sites across Saudi Arabia — curated and AI-guided.",
+    logout: "Log out", editApiSettings: "Edit API settings",
+    navDiscover: "Discover", navMap: "Map", navGuide: "AI Guide", navSaved: "Saved", navProfile: "Profile",
+    discoverHeading: "Discover hidden Saudi Arabia",
+    discoverSub: "Curated places, off the beaten path.",
+    searchPlaceholder: "Search hidden spots...",
+    allRegions: "All regions", allCategories: "All categories",
+    shareSpot: "Share a hidden spot",
+    viewDetails: "View details", askAI: "Ask AI guide about this place",
+    noResults: "No spots match your search.",
+    about: "About", tips: "Insider tip", region: "Region", category: "Category", secrecy: "Secrecy level",
+    close: "Close", save: "Save", cancel: "Cancel",
+    mapHeading: "Map", mapSub: "Explore hidden spots on the map.",
+    locateMe: "Locate me", mapNeedsKey: "Add a Google Maps API key in settings to enable the interactive map.",
+    goToSettings: "Go to API settings",
+    chatHeading: "AI Travel Guide", chatSub: "Ask Athar for hidden gems, itineraries, and local tips.",
+    chatPlaceholder: "Ask about hidden places in Saudi Arabia...", send: "Send",
+    chatEmptyTitle: "Ahlan, I'm Athar 👋", chatEmptyBody: "Ask me things like \"hidden spots near AlUla\" or \"a 2-day off-grid trip in Asir\".",
+    apiKeyMissing: "Add your Anthropic API key in settings to chat with the AI guide.",
+    errorGeneric: "Something went wrong reaching the AI guide. Please check your API key and try again.",
+    savedHeading: "Saved spots", savedSub: "Your bookmarked hidden gems.",
+    savedEmpty: "You haven't saved any spots yet. Browse Discover and tap the bookmark icon.",
+    profileHeading: "Profile", spotsSaved: "Saved", spotsShared: "Shared", memberSince: "Member since",
+    language: "Language", apiSettings: "API Settings",
+    darkMode: "Dark mode", themeLight: "Light", themeDark: "Dark",
+    formSpotTitle: "Share a hidden spot", formNameAr: "Name (Arabic)", formNameEn: "Name (English)",
+    formRegion: "Region", formCategory: "Category", formDescAr: "Description (Arabic)", formDescEn: "Description (English)",
+    formTip: "Insider tip", formLat: "Latitude", formLng: "Longitude", formLevel: "Secrecy level (1-5)",
+    formSubmit: "Publish spot", formCancel: "Cancel",
+    toastSaved: "Saved to bookmarks", toastRemoved: "Removed from bookmarks", toastSpotAdded: "Your hidden spot was published.",
+    guest: "Guest Explorer", signInRequired: "Log in with a real account to save your profile permanently.",
+    heritage:"Heritage", nature:"Nature", adventure:"Adventure", coastal:"Coastal", mountain:"Mountain",
+    invalidCreds: "Invalid email or password.", accountExists: "An account with this email already exists.",
+    fillAllFields: "Please fill in all fields.",
+  },
+  ar: {
+    appName: "أثر", appNameSub: "Athar",
+    tagline: "اكتشف ما تركه الزمان",
+    setupTitle: "إعداد أثر",
+    setupSubtitle: "أدخل مفاتيح الـ API لتشغيل التطبيق. تُحفظ المفاتيح فقط في ذاكرة هذا المتصفح.",
+    anthropicLabel: "مفتاح Anthropic API", anthropicHelp: "مطلوب — لتشغيل المرشد الذكي بالمحادثة.",
+    mapsLabel: "مفتاح خرائط جوجل", mapsHelp: "اختياري — لتفعيل عرض الخريطة التفاعلية.",
+    supabaseUrlLabel: "رابط مشروع Supabase", supabaseKeyLabel: "مفتاح Supabase العام",
+    supabaseHelp: "اختياري — لتفعيل حسابات سحابية حقيقية. بدونه سيستخدم أثر حساب ضيف محلي على هذا الجهاز.",
+    required: "مطلوب", optional: "اختياري",
+    saveContinue: "حفظ ومتابعة", keyRequiredError: "الرجاء إدخال مفتاح Anthropic API للمتابعة.",
+    getKeyAt: "احصل على مفتاح من",
+    welcomeBack: "أهلاً بعودتك", createAccount: "إنشاء حساب جديد",
+    noAccount: "جديد على أثر؟", haveAccount: "لديك حساب بالفعل؟",
+    login: "تسجيل الدخول", signup: "إنشاء حساب", switchToSignup: "إنشاء حساب", switchToLogin: "تسجيل الدخول",
+    name: "الاسم الكامل", email: "البريد الإلكتروني", password: "كلمة المرور",
+    continueAsGuest: "المتابعة كضيف", or: "أو",
+    authHeroTitle: "اقتفِ مسارات لا يعلنها إلا أهل المكان.",
+    authHeroSub: "يكشف أثر عن القرى والأودية والواحات والمواقع التراثية الخفية في أنحاء السعودية — بتنسيق بشري وذكاء اصطناعي.",
+    logout: "تسجيل الخروج", editApiSettings: "تعديل إعدادات API",
+    navDiscover: "استكشف", navMap: "الخريطة", navGuide: "المرشد الذكي", navSaved: "المحفوظات", navProfile: "الملف الشخصي",
+    discoverHeading: "اكتشف السعودية الخفية",
+    discoverSub: "أماكن منتقاة بعيدة عن الزحام السياحي.",
+    searchPlaceholder: "ابحث عن أماكن خفية...",
+    allRegions: "كل المناطق", allCategories: "كل التصنيفات",
+    shareSpot: "شارك مكاناً خفياً",
+    viewDetails: "عرض التفاصيل", askAI: "اسأل المرشد الذكي عن هذا المكان",
+    noResults: "لا توجد أماكن مطابقة لبحثك.",
+    about: "عن المكان", tips: "نصيحة محلية", region: "المنطقة", category: "التصنيف", secrecy: "درجة الخفاء",
+    close: "إغلاق", save: "حفظ", cancel: "إلغاء",
+    mapHeading: "الخريطة", mapSub: "استكشف الأماكن الخفية على الخريطة.",
+    locateMe: "حدد موقعي", mapNeedsKey: "أضف مفتاح خرائط جوجل في الإعدادات لتفعيل الخريطة التفاعلية.",
+    goToSettings: "الذهاب إلى إعدادات API",
+    chatHeading: "المرشد الذكي", chatSub: "اسأل أثر عن الأماكن الخفية وخطط الرحلات ونصائح محلية.",
+    chatPlaceholder: "اسأل عن أماكن خفية في السعودية...", send: "إرسال",
+    chatEmptyTitle: "أهلاً، أنا أثر 👋", chatEmptyBody: "جرّب أسئلة مثل «أماكن خفية قرب العلا» أو «رحلة يومين بعيدة عن الزحام في عسير».",
+    apiKeyMissing: "أضف مفتاح Anthropic API في الإعدادات للتحدث مع المرشد الذكي.",
+    errorGeneric: "حدث خطأ أثناء التواصل مع المرشد الذكي. تحقق من مفتاح الـ API وحاول مجدداً.",
+    savedHeading: "الأماكن المحفوظة", savedSub: "كنوزك الخفية المحفوظة.",
+    savedEmpty: "لم تحفظ أي مكان بعد. تصفح صفحة استكشف واضغط على أيقونة الحفظ.",
+    profileHeading: "الملف الشخصي", spotsSaved: "محفوظ", spotsShared: "مُشارك", memberSince: "عضو منذ",
+    language: "اللغة", apiSettings: "إعدادات API",
+    darkMode: "الوضع الداكن", themeLight: "فاتح", themeDark: "داكن",
+    formSpotTitle: "شارك مكاناً خفياً", formNameAr: "الاسم (عربي)", formNameEn: "الاسم (إنجليزي)",
+    formRegion: "المنطقة", formCategory: "التصنيف", formDescAr: "الوصف (عربي)", formDescEn: "الوصف (إنجليزي)",
+    formTip: "نصيحة محلية", formLat: "خط العرض", formLng: "خط الطول", formLevel: "درجة الخفاء (١-٥)",
+    formSubmit: "نشر المكان", formCancel: "إلغاء",
+    toastSaved: "أُضيف إلى المحفوظات", toastRemoved: "أُزيل من المحفوظات", toastSpotAdded: "تم نشر مكانك الخفي.",
+    guest: "مستكشف ضيف", signInRequired: "سجّل بحساب حقيقي لحفظ ملفك الشخصي بشكل دائم.",
+    heritage:"تراث", nature:"طبيعة", adventure:"مغامرة", coastal:"ساحلي", mountain:"جبلي",
+    invalidCreds: "البريد الإلكتروني أو كلمة المرور غير صحيحة.", accountExists: "يوجد حساب مسجل بهذا البريد الإلكتروني.",
+    fillAllFields: "الرجاء تعبئة جميع الحقول.",
+  }
+};
+function t(key){ return (STR[STATE.lang] && STR[STATE.lang][key]) || STR.en[key] || key; }
+function t2(lang,key){ return (STR[lang] && STR[lang][key]) || key; }
+
+/* ============================================================
+   STATE
+   ============================================================ */
+const STATE = {
+  screen: 'setup',        // setup | auth | app
+  authTab: 'login',       // login | signup
+  lang: localStorage.getItem('athar_lang') || 'ar',
+  theme: localStorage.getItem('athar_theme') || 'light', // light | dark
+  tab: 'discover',        // discover | map | guide | saved | profile
+  user: null,
+  userMenuOpen: false,
+  spots: [],
+  bookmarks: [],
+  filterText: '',
+  filterRegion: '',
+  filterCategory: '',
+  activeSpot: null,
+  showShareForm: false,
+  chatMessages: [],       // {role:'user'|'assistant', content:'...'}
+  chatLoading: false,
+  mapLoaded: false,
+  mapInstance: null,
+  mapMarkers: [],
+  authError: '',
+  setupError: '',
+};
+
+/* ============================================================
+   SEED DATA — curated hidden spots
+   ============================================================ */
+const SEED_SPOTS = [
+  { id:'s1', name_ar:'رجال ألمع', name_en:'Rijal Almaa', region:'عسير / Asir', category_ar:'تراث', category_en:'heritage', icon:'🏯', color:'#BA7517', hidden_level:3, lat:18.1725, lng:42.4419,
+    desc_ar:'قرية حجرية تراثية بنيت من الحجر والطين والزجاج الملون، تتسلق سفح جبل شديد الانحدار في عسير.',
+    desc_en:'A striking stone-and-slate heritage village built into a steep mountainside, famous for its colorful painted towers.',
+    tip_ar:'الزيارة الأفضل عند الغروب حين تُضاء الأبراج الحجرية بألوان دافئة.', tip_en:'Visit near sunset when the stone towers glow warm against the mountain.'},
+  { id:'s2', name_ar:'قرية حبالة', name_en:'Habala Village', region:'عسير / Asir', category_ar:'مغامرة', category_en:'adventure', icon:'⛰️', color:'#27500A', hidden_level:4, lat:18.1478, lng:42.3661,
+    desc_ar:'قرية معلّقة على حافة منحدر صخري، كانت تُعرف قديماً بأنها لا تُصعد إلا بالحبال، ويمكن الوصول إليها الآن بتلفريك.',
+    desc_en:'A village once accessible only by rope down a sheer cliff face, now reachable via a scenic cable car.',
+    tip_ar:'احجز التلفريك مبكراً في عطلات نهاية الأسبوع لتفادي الازدحام.', tip_en:'Book the cable car early on weekends — it fills up fast.'},
+  { id:'s3', name_ar:'كهف القارة', name_en:'Al-Qarah Cave', region:'الأحساء / Al-Ahsa', category_ar:'تراث', category_en:'heritage', icon:'🪨', color:'#BA7517', hidden_level:2, lat:25.4360, lng:49.6893,
+    desc_ar:'شبكة كهوف طبيعية باردة داخل جبل جيري وسط واحة الأحساء، مسجّلة ضمن تراث اليونسكو.',
+    desc_en:'A cool, naturally-formed limestone cave system inside a hill in the Al-Ahsa oasis, part of a UNESCO World Heritage site.',
+    tip_ar:'احمل مصباحاً يدوياً — بعض الممرات الداخلية خافتة الإضاءة.', tip_en:'Bring a flashlight — some inner passages are dimly lit.'},
+  { id:'s4', name_ar:'جزر فرسان', name_en:'Farasan Islands', region:'جازان / Jazan', category_ar:'ساحلي', category_en:'coastal', icon:'🏝️', color:'#639922', hidden_level:4, lat:16.7083, lng:41.9028,
+    desc_ar:'أرخبيل مرجاني هادئ في البحر الأحمر يضم بيوتاً تراثية من العهد العثماني وشعاباً مرجانية نقية.',
+    desc_en:'A quiet Red Sea coral archipelago with Ottoman-era coral-stone houses and pristine reefs.',
+    tip_ar:'تصل العبّارة من جازان — احجز مبكراً في مواسم الغطس.', tip_en:'Reach it by ferry from Jazan; book ahead during diving season.'},
+  { id:'s5', name_ar:'حافة العالم', name_en:'Edge of the World', region:'الرياض / Riyadh', category_ar:'مغامرة', category_en:'adventure', icon:'🏜️', color:'#27500A', hidden_level:2, lat:24.9997, lng:46.0206,
+    desc_ar:'جرف صخري هائل يطل على الصحراء الممتدة، على بُعد ساعة من الرياض، ومن أشهر مواقع التصوير في المملكة.',
+    desc_en:'A dramatic escarpment overlooking an endless desert plain, about an hour from Riyadh — a favorite among photographers.',
+    tip_ar:'اذهب قبل الغروب بساعتين وخذ سيارة دفع رباعي للطريق الترابي الأخير.', tip_en:'Go two hours before sunset; a 4x4 helps for the final dirt track.'},
+  { id:'s6', name_ar:'جبل إكمة', name_en:'Jabal Ikmah', region:'العلا / AlUla', category_ar:'تراث', category_en:'heritage', icon:'📜', color:'#BA7517', hidden_level:3, lat:26.6289, lng:37.9328,
+    desc_ar:'يُعرف بـ"المكتبة المفتوحة"، جبل محفور بآلاف النقوش والكتابات القديمة بلغات متعددة عبر آلاف السنين.',
+    desc_en:'Known as an "open-air library," this rock face holds thousands of ancient inscriptions in multiple languages.',
+    tip_ar:'يتطلب الدخول تصريحاً من هيئة العلا الملكية — احجز مسبقاً.', tip_en:'Entry requires a permit via the Royal Commission for AlUla — book in advance.'},
+  { id:'s7', name_ar:'وادي ديسة', name_en:'Wadi Disah', region:'تبوك / Tabuk', category_ar:'طبيعة', category_en:'nature', icon:'🌴', color:'#3B6D11', hidden_level:4, lat:27.8494, lng:35.6883,
+    desc_ar:'واد أخضر محاط بجدران صخرية حمراء شاهقة ونخيل كثيف، يشبه واحة مخفية وسط الصحراء الشمالية.',
+    desc_en:'A lush green canyon walled by towering red sandstone cliffs and dense palm groves — a hidden oasis in the north.',
+    tip_ar:'المشي داخل الوادي بعد المطر يكشف عن برك مائية مؤقتة رائعة.', tip_en:'Hike deeper after rains to find striking temporary rock pools.'},
+  { id:'s8', name_ar:'تنومة', name_en:'Tanomah', region:'عسير / Asir', category_ar:'جبلي', category_en:'mountain', icon:'🌲', color:'#173404', hidden_level:3, lat:18.9711, lng:42.2822,
+    desc_ar:'بلدة جبلية خضراء مرتفعة تكسوها غابات العرعر، ومناخها المعتدل يجعلها ملاذاً صيفياً هادئاً.',
+    desc_en:'A high-altitude green mountain town cloaked in juniper forest, known for its cool, misty summer climate.',
+    tip_ar:'الضباب الصباحي بين الأشجار أجمل مشهد — كن هناك عند الفجر.', tip_en:'Morning mist through the juniper trees is the highlight — arrive at dawn.'},
+  { id:'s9', name_ar:'دومة الجندل', name_en:'Dumat Al-Jandal', region:'الجوف / Al-Jawf', category_ar:'تراث', category_en:'heritage', icon:'🏰', color:'#BA7517', hidden_level:3, lat:29.8172, lng:39.8672,
+    desc_ar:'واحة تاريخية شمالية تضم قلعة مارد الأثرية ومسجد عمر بن الخطاب، من أقدم المستوطنات في الجزيرة العربية.',
+    desc_en:'A northern oasis town with the ancient Marid Castle and Omar bin Al-Khattab Mosque — one of Arabia\'s oldest settlements.',
+    tip_ar:'اجمع بين الزيارة وبحيرة دومة الجندل القريبة لغروب مميز.', tip_en:'Pair your visit with nearby Dumat Al-Jandal lake for a scenic sunset.'},
+  { id:'s10', name_ar:'فوهة الوهبة', name_en:'Al Wahbah Crater', region:'مكة المكرمة / Makkah', category_ar:'طبيعة', category_en:'nature', icon:'🌋', color:'#3B6D11', hidden_level:3, lat:22.8836, lng:41.1367,
+    desc_ar:'فوهة بركانية ضخمة يبلغ عمقها نحو ٢٥٠ متراً، تتلألأ قاعها ببلورات ملحية بيضاء نادرة.',
+    desc_en:'A massive volcanic crater roughly 250m deep, its floor shimmering with rare white crystalline deposits.',
+    tip_ar:'انزل مبكراً صباحاً لتفادي الحرارة على الدرب غير المُعبّد.', tip_en:'Descend early morning to avoid heat on the unpaved trail.'},
+  { id:'s11', name_ar:'أملج', name_en:'Umluj', region:'تبوك / Tabuk', category_ar:'ساحلي', category_en:'coastal', icon:'🐚', color:'#639922', hidden_level:2, lat:25.0213, lng:37.2685,
+    desc_ar:'تُلقب بـ"مالديف السعودية"، شواطئ وجزر مرجانية بمياه فيروزية صافية على البحر الأحمر.',
+    desc_en:'Dubbed "the Maldives of Saudi Arabia" for its turquoise waters and coral islets along the Red Sea.',
+    tip_ar:'استأجر قارباً محلياً للوصول إلى الجزر غير المأهولة القريبة.', tip_en:'Hire a local boat to reach the uninhabited islets just offshore.'},
+  { id:'s12', name_ar:'جبال فيفاء', name_en:'Faifa Mountains', region:'جازان / Jazan', category_ar:'جبلي', category_en:'mountain', icon:'☁️', color:'#173404', hidden_level:5, lat:17.2419, lng:43.4889,
+    desc_ar:'جبال مدرّجة زراعياً تحيط بها الضبابيات على مدار العام، مع قرى قديمة وأبراج حجرية دفاعية.',
+    desc_en:'Terraced agricultural mountains wrapped in year-round mist, dotted with ancient villages and stone watchtowers.',
+    tip_ar:'الطرق الجبلية ضيقة وملتوية — قُد بحذر وتوقف عند نقاط الإطلالة.', tip_en:'Roads are narrow and winding — drive carefully and stop at the viewpoints.'},
+];
+
+/* ============================================================
+   PERSISTENCE HELPERS
+   ============================================================ */
+function lsGet(key, fallback){ try{ const v = localStorage.getItem(key); return v ? JSON.parse(v) : fallback; }catch(e){ return fallback; } }
+function lsSet(key, val){ localStorage.setItem(key, JSON.stringify(val)); }
+
+function loadUserSpots(){ return lsGet('athar_user_spots', []); }
+function saveUserSpots(list){ lsSet('athar_user_spots', list); }
+
+function loadBookmarks(){ return lsGet('athar_bookmarks_' + (STATE.user ? STATE.user.id : 'guest'), []); }
+function saveBookmarks(){ lsSet('athar_bookmarks_' + (STATE.user ? STATE.user.id : 'guest'), STATE.bookmarks); }
+
+function refreshSpots(){
+  STATE.spots = SEED_SPOTS.concat(loadUserSpots());
+}
+
+/* ============================================================
+   TOAST
+   ============================================================ */
+let toastTimer = null;
+function showToast(msg){
+  const el = document.getElementById('toast');
+  el.textContent = msg;
+  el.classList.add('show');
+  clearTimeout(toastTimer);
+  toastTimer = setTimeout(()=> el.classList.remove('show'), 2200);
+}
+
+/* ============================================================
+   AUTH — Supabase REST if configured, else local mock
+   ============================================================ */
+function hasSupabase(){ return !!(CONFIG.SUPABASE_URL && CONFIG.SUPABASE_KEY); }
+
+async function signUp(name, email, password){
+  if (hasSupabase()){
+    const res = await fetch(CONFIG.SUPABASE_URL.replace(/\/$/,'') + '/auth/v1/signup', {
+      method:'POST',
+      headers:{ 'Content-Type':'application/json', 'apikey': CONFIG.SUPABASE_KEY },
+      body: JSON.stringify({ email, password, data:{ name } })
+    });
+    const data = await res.json();
+    if (!res.ok) throw new Error(data.msg || data.error_description || t('accountExists'));
+    return { id: data.user ? data.user.id : data.id, name, email, createdAt: Date.now() };
+  }
+  const users = lsGet('athar_local_users', {});
+  if (users[email]) throw new Error(t('accountExists'));
+  const user = { id: 'u_' + Date.now(), name, email, password, createdAt: Date.now() };
+  users[email] = user;
+  lsSet('athar_local_users', users);
+  return { id:user.id, name:user.name, email:user.email, createdAt:user.createdAt };
+}
+
+async function signIn(email, password){
+  if (hasSupabase()){
+    const res = await fetch(CONFIG.SUPABASE_URL.replace(/\/$/,'') + '/auth/v1/token?grant_type=password', {
+      method:'POST',
+      headers:{ 'Content-Type':'application/json', 'apikey': CONFIG.SUPABASE_KEY },
+      body: JSON.stringify({ email, password })
+    });
+    const data = await res.json();
+    if (!res.ok) throw new Error(data.msg || data.error_description || t('invalidCreds'));
+    const name = (data.user && data.user.user_metadata && data.user.user_metadata.name) || email.split('@')[0];
+    return { id: data.user.id, name, email, createdAt: Date.parse(data.user.created_at) || Date.now() };
+  }
+  const users = lsGet('athar_local_users', {});
+  const u = users[email];
+  if (!u || u.password !== password) throw new Error(t('invalidCreds'));
+  return { id:u.id, name:u.name, email:u.email, createdAt:u.createdAt };
+}
+
+function guestUser(){
+  let g = lsGet('athar_guest_user', null);
+  if (!g){ g = { id:'guest_' + Date.now(), name:t('guest'), email:'', createdAt: Date.now(), isGuest:true }; lsSet('athar_guest_user', g); }
+  return g;
+}
+
+function persistSession(user){ lsSet('athar_session', user); }
+function clearSession(){ localStorage.removeItem('athar_session'); }
+
+/* ============================================================
+   RENDER: ROOT DISPATCH
+   ============================================================ */
+function render(){
+  document.documentElement.lang = STATE.lang;
+  document.documentElement.dir = STATE.lang === 'ar' ? 'rtl' : 'ltr';
+  if (STATE.theme === 'dark') document.documentElement.setAttribute('data-theme', 'dark');
+  else document.documentElement.removeAttribute('data-theme');
+  const root = document.getElementById('root');
+  if (STATE.screen === 'setup') root.innerHTML = renderSetup();
+  else if (STATE.screen === 'auth') root.innerHTML = renderAuth();
+  else root.innerHTML = renderApp();
+  wireEvents();
+}
+
+/* ============================================================
+   RENDER: SETUP SCREEN
+   ============================================================ */
+function renderSetup(){
+  return `
+  <div class="screen setup-wrap">
+    <div class="setup-card">
+      <div class="brand" style="justify-content:center;margin-bottom:14px">${atharLogoSVG(210, false, true)}</div>
+      <p class="setup-sub">${t('setupSubtitle')}</p>
+
+      ${STATE.setupError ? `<div class="error-box">${STATE.setupError}</div>` : ''}
+
+      <form id="setup-form">
+        <div class="setup-section-title">${t('anthropicLabel')} <span class="badge">${t('required')}</span></div>
+        <div class="field">
+          <label>${t('anthropicLabel')}</label>
+          <input type="password" id="in-anthropic" placeholder="sk-ant-..." value="${escapeHtml(CONFIG.ANTHROPIC_API_KEY)}">
+          <div class="hint">${t('anthropicHelp')} ${t('getKeyAt')} <a href="https://console.anthropic.com" target="_blank" rel="noopener">console.anthropic.com</a></div>
+        </div>
+
+        <div class="setup-section-title">${t('mapsLabel')} <span class="badge badge-optional">${t('optional')}</span></div>
+        <div class="field">
+          <label>${t('mapsLabel')}</label>
+          <input type="password" id="in-maps" placeholder="AIza..." value="${escapeHtml(CONFIG.GOOGLE_MAPS_API_KEY)}">
+          <div class="hint">${t('mapsHelp')}</div>
+        </div>
+
+        <div class="setup-section-title">Supabase <span class="badge badge-optional">${t('optional')}</span></div>
+        <div class="field">
+          <label>${t('supabaseUrlLabel')}</label>
+          <input type="text" id="in-sb-url" placeholder="https://xxxx.supabase.co" value="${escapeHtml(CONFIG.SUPABASE_URL)}">
+        </div>
+        <div class="field">
+          <label>${t('supabaseKeyLabel')}</label>
+          <input type="password" id="in-sb-key" placeholder="eyJ..." value="${escapeHtml(CONFIG.SUPABASE_KEY)}">
+          <div class="hint">${t('supabaseHelp')}</div>
+        </div>
+
+        <button type="submit" class="btn btn-primary btn-block" style="margin-top:8px">${t('saveContinue')}</button>
+      </form>
+
+      <div style="text-align:center;margin-top:18px">
+        <button id="lang-toggle-setup" class="lang-btn">${STATE.lang === 'ar' ? 'English' : 'العربية'}</button>
+      </div>
+    </div>
+  </div>`;
+}
+
+/* ============================================================
+   RENDER: AUTH SCREEN
+   ============================================================ */
+function renderAuth(){
+  const isLogin = STATE.authTab === 'login';
+  return `
+  <div class="screen auth-wrap">
+    <div class="auth-side">
+      <div style="position:relative;margin-bottom:34px">${atharLogoSVG(190, true, false)}</div>
+      <h1>${t('authHeroTitle')}</h1>
+      <p>${t('authHeroSub')}</p>
+    </div>
+    <div class="auth-form-col">
+      <div class="auth-box">
+        <div style="text-align:center;margin-bottom:22px">
+          <button id="lang-toggle-auth" class="lang-btn">${STATE.lang === 'ar' ? 'English' : 'العربية'}</button>
+        </div>
+        <div class="tab-row">
+          <button data-tab="login" class="${isLogin ? 'active':''}">${t('login')}</button>
+          <button data-tab="signup" class="${!isLogin ? 'active':''}">${t('signup')}</button>
+        </div>
+
+        ${STATE.authError ? `<div class="error-box">${STATE.authError}</div>` : ''}
+
+        <form id="auth-form">
+          ${!isLogin ? `<div class="field"><label>${t('name')}</label><input type="text" id="in-name"></div>` : ''}
+          <div class="field"><label>${t('email')}</label><input type="email" id="in-email"></div>
+          <div class="field"><label>${t('password')}</label><input type="password" id="in-password"></div>
+          <button type="submit" class="btn btn-primary btn-block" id="auth-submit-btn">${isLogin ? t('login') : t('signup')}</button>
+        </form>
+
+        <div class="divider">${t('or')}</div>
+        <button id="guest-btn" class="btn btn-outline btn-block">${t('continueAsGuest')}</button>
+
+        <p style="text-align:center;margin-top:16px;font-size:13px;color:var(--ink-soft)">
+          ${isLogin ? t('noAccount') : t('haveAccount')}
+          <button id="switch-auth-tab" style="color:var(--green);font-weight:500;text-decoration:underline">${isLogin ? t('switchToSignup') : t('switchToLogin')}</button>
+        </p>
+      </div>
+    </div>
+  </div>`;
+}
+
+/* ============================================================
+   RENDER: APP SHELL
+   ============================================================ */
+function renderApp(){
+  const initials = STATE.user ? (STATE.user.name || '?').trim().charAt(0).toUpperCase() : '?';
+  const tabs = [
+    ['discover','navDiscover','🧭'], ['map','navMap','🗺️'], ['guide','navGuide','✨'],
+    ['saved','navSaved','🔖'], ['profile','navProfile','👤']
+  ];
+  return `
+  <div class="app-shell">
+    <header class="topbar">
+      <div class="topbar-inner">
+        <div class="brand" style="cursor:pointer" id="brand-home">
+          <div class="brand-mark">${atharIconSVG(30, true)}</div>
+          <div class="brand-name" style="font-size:19px">${t('appName')}</div>
+        </div>
+        <div class="topbar-actions">
+          <button class="lang-btn" id="theme-toggle-app" title="${t('darkMode')}">${STATE.theme === 'dark' ? '☀️' : '🌙'}</button>
+          <button class="lang-btn" id="lang-toggle-app">${STATE.lang === 'ar' ? 'EN' : 'AR'}</button>
+          <div class="user-menu">
+            <div class="avatar" id="avatar-btn" style="cursor:pointer">${initials}</div>
+            ${STATE.userMenuOpen ? `
+            <div class="user-dropdown">
+              <div style="padding:8px 12px;font-size:13px;font-weight:500;border-bottom:1px solid var(--border);margin-bottom:6px">${escapeHtml(STATE.user.name)}</div>
+              <button id="menu-settings">${t('editApiSettings')}</button>
+              <button id="menu-logout" style="color:var(--danger)">${t('logout')}</button>
+            </div>` : ''}
+          </div>
+        </div>
+      </div>
+      <nav class="tabs-nav">
+        <div class="tabs-nav-inner">
+          ${tabs.map(([id,label,icon]) => `
+            <button class="tab-item ${STATE.tab===id?'active':''}" data-tab="${id}">
+              <span>${icon}</span><span>${t(label)}</span>
+            </button>`).join('')}
+        </div>
+      </nav>
+    </header>
+
+    <main class="main-content">
+      <div class="container">
+        ${STATE.tab === 'discover' ? renderDiscover() :
+          STATE.tab === 'map' ? renderMapTab() :
+          STATE.tab === 'guide' ? renderChatTab() :
+          STATE.tab === 'saved' ? renderSaved() :
+          renderProfile()}
+      </div>
+    </main>
+
+    ${STATE.tab === 'discover' ? `<button class="fab" id="fab-share" title="${t('shareSpot')}">+</button>` : ''}
+    ${STATE.activeSpot ? renderSpotModal(STATE.activeSpot) : ''}
+    ${STATE.showShareForm ? renderShareForm() : ''}
+  </div>`;
+}
+
+/* ---------- Discover ---------- */
+function getFilteredSpots(){
+  return STATE.spots.filter(s => {
+    const text = (STATE.filterText || '').trim().toLowerCase();
+    const matchesText = !text || (s.name_ar+s.name_en+s.desc_ar+s.desc_en+s.region).toLowerCase().includes(text);
+    const matchesRegion = !STATE.filterRegion || s.region === STATE.filterRegion;
+    const matchesCat = !STATE.filterCategory || s.category_en === STATE.filterCategory;
+    return matchesText && matchesRegion && matchesCat;
+  });
+}
+
+function renderDiscover(){
+  const regions = [...new Set(STATE.spots.map(s=>s.region))];
+  const cats = [...new Set(STATE.spots.map(s=>s.category_en))];
+  const list = getFilteredSpots();
+  return `
+    <div class="page-head">
+      <h2>${t('discoverHeading')}</h2>
+      <p>${t('discoverSub')}</p>
+    </div>
+    <div class="toolbar">
+      <input type="text" id="search-input" placeholder="${t('searchPlaceholder')}" value="${escapeHtml(STATE.filterText)}">
+      <select id="region-filter">
+        <option value="">${t('allRegions')}</option>
+        ${regions.map(r=>`<option value="${escapeHtml(r)}" ${STATE.filterRegion===r?'selected':''}>${escapeHtml(r)}</option>`).join('')}
+      </select>
+      <select id="category-filter">
+        <option value="">${t('allCategories')}</option>
+        ${cats.map(c=>`<option value="${c}" ${STATE.filterCategory===c?'selected':''}>${t(c)}</option>`).join('')}
+      </select>
+    </div>
+    ${list.length === 0 ? `<div class="no-results">${t('noResults')}</div>` : `
+    <div class="grid">
+      ${list.map(s => renderSpotCard(s)).join('')}
+    </div>`}
+  `;
+}
+
+function renderSpotCard(s){
+  const bookmarked = STATE.bookmarks.includes(s.id);
+  const name = STATE.lang === 'ar' ? s.name_ar : s.name_en;
+  const desc = STATE.lang === 'ar' ? s.desc_ar : s.desc_en;
+  return `
+  <div class="card spot-card" data-open-spot="${s.id}">
+    <div class="spot-media" style="background:linear-gradient(135deg, ${s.color}, ${s.color}cc)">
+      <span>${s.icon}</span>
+      <span class="level">${'●'.repeat(s.hidden_level)}${'○'.repeat(5-s.hidden_level)}</span>
+      <button class="bmk" data-bookmark="${s.id}">${bookmarked ? '★' : '☆'}</button>
+    </div>
+    <div class="spot-body">
+      <h3>${escapeHtml(name)}</h3>
+      <div class="spot-meta"><span class="cat-pill">${t(s.category_en)}</span><span>${escapeHtml(s.region)}</span></div>
+      <p class="spot-desc">${escapeHtml(desc)}</p>
+    </div>
+  </div>`;
+}
+
+function renderSpotModal(spot){
+  const s = STATE.spots.find(x=>x.id===spot) || STATE.spots.find(x=>x.id===STATE.activeSpot);
+  if (!s) return '';
+  const name = STATE.lang === 'ar' ? s.name_ar : s.name_en;
+  const desc = STATE.lang === 'ar' ? s.desc_ar : s.desc_en;
+  const tip = STATE.lang === 'ar' ? s.tip_ar : s.tip_en;
+  const bookmarked = STATE.bookmarks.includes(s.id);
+  return `
+  <div class="modal-overlay" id="spot-modal-overlay">
+    <div class="modal">
+      <div class="modal-hero" style="background:linear-gradient(135deg, ${s.color}, ${s.color}cc)">
+        <span>${s.icon}</span>
+        <button class="modal-close" id="close-spot-modal">✕</button>
+      </div>
+      <div class="modal-body">
+        <h2>${escapeHtml(name)}</h2>
+        <div class="spot-meta"><span class="cat-pill">${t(s.category_en)}</span><span>${escapeHtml(s.region)}</span><span>· ${t('secrecy')}: ${'●'.repeat(s.hidden_level)}${'○'.repeat(5-s.hidden_level)}</span></div>
+
+        <div class="info-block">
+          <h4>${t('about')}</h4>
+          <p>${escapeHtml(desc)}</p>
+        </div>
+        <div class="info-block">
+          <h4>${t('tips')}</h4>
+          <p>${escapeHtml(tip)}</p>
+        </div>
+
+        <div class="modal-actions">
+          <button class="btn btn-primary" data-bookmark="${s.id}">${bookmarked ? '★ ' + t('navSaved') : '☆ ' + t('shareSpot').split(' ')[0]}</button>
+          <button class="btn btn-gold" id="ask-ai-about" data-spot="${s.id}">${t('askAI')}</button>
+          <button class="btn btn-ghost" id="close-spot-modal-2">${t('close')}</button>
+        </div>
+      </div>
+    </div>
+  </div>`;
+}
+
+function renderShareForm(){
+  return `
+  <div class="modal-overlay" id="share-modal-overlay">
+    <div class="modal">
+      <div class="modal-body">
+        <h2>${t('formSpotTitle')}</h2>
+        <form id="share-spot-form" style="margin-top:16px">
+          <div class="grid-2">
+            <div class="field"><label>${t('formNameAr')}</label><input type="text" id="f-name-ar" required></div>
+            <div class="field"><label>${t('formNameEn')}</label><input type="text" id="f-name-en" required></div>
+          </div>
+          <div class="grid-2">
+            <div class="field"><label>${t('formRegion')}</label><input type="text" id="f-region" required></div>
+            <div class="field">
+              <label>${t('formCategory')}</label>
+              <select id="f-category">
+                <option value="heritage">${t('heritage')}</option>
+                <option value="nature">${t('nature')}</option>
+                <option value="adventure">${t('adventure')}</option>
+                <option value="coastal">${t('coastal')}</option>
+                <option value="mountain">${t('mountain')}</option>
+              </select>
+            </div>
+          </div>
+          <div class="field"><label>${t('formDescAr')}</label><textarea id="f-desc-ar" rows="2" required></textarea></div>
+          <div class="field"><label>${t('formDescEn')}</label><textarea id="f-desc-en" rows="2" required></textarea></div>
+          <div class="field"><label>${t('formTip')}</label><input type="text" id="f-tip"></div>
+          <div class="grid-2">
+            <div class="field"><label>${t('formLat')}</label><input type="number" step="any" id="f-lat" value="24.7136" required></div>
+            <div class="field"><label>${t('formLng')}</label><input type="number" step="any" id="f-lng" value="46.6753" required></div>
+          </div>
+          <div class="field">
+            <label>${t('formLevel')}</label>
+            <select id="f-level"><option value="1">1</option><option value="2">2</option><option value="3" selected>3</option><option value="4">4</option><option value="5">5</option></select>
+          </div>
+          <div class="modal-actions">
+            <button type="submit" class="btn btn-primary">${t('formSubmit')}</button>
+            <button type="button" class="btn btn-ghost" id="cancel-share-form">${t('formCancel')}</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>`;
+}
+
+/* ---------- Map tab ---------- */
+function renderMapTab(){
+  return `
+    <div class="page-head">
+      <h2>${t('mapHeading')}</h2>
+      <p>${t('mapSub')}</p>
+    </div>
+    ${CONFIG.GOOGLE_MAPS_API_KEY ? `
+      <div style="margin-bottom:14px"><button class="btn btn-outline btn-sm" id="locate-me-btn">📍 ${t('locateMe')}</button></div>
+      <div id="map-view"></div>
+    ` : `
+      <div id="map-view">
+        <div class="map-fallback">
+          <div style="font-size:40px">🗺️</div>
+          <p>${t('mapNeedsKey')}</p>
+          <button class="btn btn-primary btn-sm" id="goto-settings-btn">${t('goToSettings')}</button>
+        </div>
+      </div>
+    `}
+  `;
+}
+
+/* ---------- Chat tab ---------- */
+function renderChatTab(){
+  const suggestions = STATE.lang === 'ar'
+    ? ['أماكن خفية قرب العلا', 'رحلة يومين بعيدة عن الزحام في عسير', 'أفضل وقت لزيارة وادي ديسة', 'شواطئ هادئة قرب تبوك']
+    : ['Hidden spots near AlUla', 'A 2-day off-grid trip in Asir', 'Best time to visit Wadi Disah', 'Quiet beaches near Tabuk'];
+  return `
+    <div class="page-head">
+      <h2>${t('chatHeading')}</h2>
+      <p>${t('chatSub')}</p>
+    </div>
+    <div class="chat-wrap">
+      <div class="chat-messages" id="chat-messages">
+        ${STATE.chatMessages.length === 0 ? `
+          <div style="text-align:center;margin:auto;color:var(--ink-soft);max-width:360px">
+            <div style="font-size:34px;margin-bottom:8px">✨</div>
+            <div style="font-weight:500;color:var(--ink);margin-bottom:6px">${t('chatEmptyTitle')}</div>
+            <div style="font-size:13.5px">${t('chatEmptyBody')}</div>
+          </div>
+        ` : STATE.chatMessages.map(m => `
+          <div class="msg ${m.role==='user'?'msg-user':'msg-ai'+(m.error?' error':'')}">${escapeHtml(m.content)}</div>
+        `).join('') + (STATE.chatLoading ? `<div class="typing"><span></span><span></span><span></span></div>` : '')}
+      </div>
+      ${STATE.chatMessages.length === 0 ? `
+      <div class="chat-suggestions">
+        ${suggestions.map(s=>`<button class="chip" data-suggestion="${escapeHtml(s)}">${escapeHtml(s)}</button>`).join('')}
+      </div>` : ''}
+      <form id="chat-form" class="chat-input-row">
+        <input type="text" id="chat-input" placeholder="${t('chatPlaceholder')}" ${!CONFIG.ANTHROPIC_API_KEY ? 'disabled' : ''} autocomplete="off">
+        <button type="submit" class="btn btn-primary" ${!CONFIG.ANTHROPIC_API_KEY || STATE.chatLoading ? 'disabled' : ''}>${STATE.chatLoading ? '<span class="spinner"></span>' : t('send')}</button>
+      </form>
+    </div>
+  `;
+}
+
+/* ---------- Saved tab ---------- */
+function renderSaved(){
+  const list = STATE.spots.filter(s => STATE.bookmarks.includes(s.id));
+  return `
+    <div class="page-head">
+      <h2>${t('savedHeading')}</h2>
+      <p>${t('savedSub')}</p>
+    </div>
+    ${list.length === 0 ? `<div class="no-results">${t('savedEmpty')}</div>` : `
+    <div class="grid">${list.map(s=>renderSpotCard(s)).join('')}</div>`}
+  `;
+}
+
+/* ---------- Profile tab ---------- */
+function renderProfile(){
+  const userSpotsCount = loadUserSpots().filter(s => s.ownerId === (STATE.user && STATE.user.id)).length;
+  const memberDate = STATE.user ? new Date(STATE.user.createdAt).toLocaleDateString(STATE.lang === 'ar' ? 'ar-SA' : 'en-US') : '';
+  return `
+    <div class="page-head"><h2>${t('profileHeading')}</h2></div>
+    <div class="card profile-card">
+      <div class="profile-avatar">${(STATE.user.name||'?').charAt(0).toUpperCase()}</div>
+      <div>
+        <div style="font-weight:500;font-size:18px">${escapeHtml(STATE.user.name)}</div>
+        <div style="color:var(--ink-soft);font-size:13px">${escapeHtml(STATE.user.email || '')}</div>
+        <div style="color:var(--ink-soft);font-size:12px;margin-top:4px">${t('memberSince')} ${memberDate}</div>
+        <div class="stat-row">
+          <div class="stat"><b>${localizeNumber(STATE.bookmarks.length)}</b>${t('spotsSaved')}</div>
+          <div class="stat"><b>${localizeNumber(userSpotsCount)}</b>${t('spotsShared')}</div>
+        </div>
+      </div>
+    </div>
+    ${STATE.user.isGuest ? `<div class="error-box" style="background:var(--gold-light);border-color:var(--gold);color:#6b5514">${t('signInRequired')}</div>` : ''}
+    <div class="settings-list">
+      <div class="card" id="profile-lang-toggle">
+        <div class="settings-row"><span>${t('language')}</span><span style="font-weight:500;color:var(--green)">${STATE.lang === 'ar' ? 'العربية' : 'English'} ⇄</span></div>
+      </div>
+      <div class="card" id="profile-theme-toggle">
+        <div class="settings-row"><span>${t('darkMode')}</span><span style="font-weight:500;color:var(--green)">${STATE.theme === 'dark' ? '🌙 ' + t('themeDark') : '☀️ ' + t('themeLight')} ⇄</span></div>
+      </div>
+      <div class="card" id="profile-api-settings">
+        <div class="settings-row"><span>${t('apiSettings')}</span><span>⚙️</span></div>
+      </div>
+      <div class="card" id="profile-logout">
+        <div class="settings-row"><span style="color:var(--danger)">${t('logout')}</span><span>↩</span></div>
+      </div>
+    </div>
+  `;
+}
+
+/* ============================================================
+   HELPERS
+   ============================================================ */
+function escapeHtml(str){
+  return String(str==null?'':str).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+}
+function haversine(lat1,lng1,lat2,lng2){
+  const R=6371, dLat=(lat2-lat1)*Math.PI/180, dLng=(lng2-lng1)*Math.PI/180;
+  const a=Math.sin(dLat/2)**2 + Math.cos(lat1*Math.PI/180)*Math.cos(lat2*Math.PI/180)*Math.sin(dLng/2)**2;
+  return R*2*Math.atan2(Math.sqrt(a),Math.sqrt(1-a));
+}
+const ARABIC_DIGITS = ['٠','١','٢','٣','٤','٥','٦','٧','٨','٩'];
+function localizeNumber(n){
+  const s = String(n);
+  return STATE.lang === 'ar' ? s.replace(/[0-9]/g, d => ARABIC_DIGITS[+d]) : s;
+}
+
+/* ---------- Brand icon / logo (layered-rectangle ruins mark) ---------- */
+function atharIconSVG(size, dark){
+  size = size || 48;
+  const c = dark
+    ? { r1:'#1a3320', r2:'#27500A', r3:'#3B6D11', r4:'#639922', dot:'#97C459' }
+    : { r1:'#EAF3DE', r2:'#C0DD97', r3:'#97C459', r4:'#639922', dot:'#27500A' };
+  return `<svg width="${size}" height="${size}" viewBox="0 0 48 48" role="img" aria-label="أثر">
+    <rect x="0" y="14" width="48" height="34" rx="5" fill="${c.r1}"/>
+    <rect x="6" y="22" width="36" height="22" rx="4" fill="${c.r2}"/>
+    <rect x="12" y="8" width="24" height="16" rx="3" fill="${c.r3}"/>
+    <rect x="18" y="2" width="12" height="8" rx="2" fill="${c.r4}"/>
+    <circle cx="24" cy="36" r="3" fill="${c.dot}"/>
+  </svg>`;
+}
+function atharLogoSVG(width, dark, showTagline){
+  width = width || 180;
+  const h = showTagline ? 76 : 55;
+  const c = dark
+    ? { r1:'#1a3320', r2:'#27500A', r3:'#3B6D11', r4:'#639922', dot:'#97C459', word:'#C0DD97', sub:'#639922', line:'#3B6D11', tag:'#97C459' }
+    : { r1:'#EAF3DE', r2:'#C0DD97', r3:'#97C459', r4:'#639922', dot:'#27500A', word:'#173404', sub:'#3B6D11', line:'#97C459', tag:'#3B6D11' };
+  const tagLine = showTagline ? `
+    <line x1="76" y1="62" x2="200" y2="62" stroke="${c.line}" stroke-width=".5"/>
+    <text x="76" y="73" font-family="Cairo, Inter, sans-serif" font-size="9.5" font-weight="400" fill="${c.tag}">${escapeHtml(t('tagline'))}</text>` : '';
+  return `<svg width="${width}" height="${h * (width/220)}" viewBox="0 0 220 ${h}" role="img" aria-label="أثر — منصة السياحة الخفية السعودية">
+    <title>أثر Athar</title>
+    <rect x="8"  y="22" width="52" height="38" rx="5" fill="${c.r1}"/>
+    <rect x="14" y="30" width="40" height="26" rx="4" fill="${c.r2}"/>
+    <rect x="20" y="16" width="28" height="16" rx="3" fill="${c.r3}"/>
+    <rect x="26" y="10" width="16" height="10" rx="2" fill="${c.r4}"/>
+    <circle cx="34" cy="44" r="3" fill="${c.dot}"/>
+    <line x1="34" y1="47" x2="34" y2="56" stroke="${c.sub}" stroke-width="1" stroke-dasharray="2 1.5"/>
+    <text x="76" y="40" font-family="Cairo, sans-serif" font-size="30" font-weight="500" fill="${c.word}">أثر</text>
+    <text x="76" y="57" font-family="Inter, sans-serif" font-size="11" font-weight="400" fill="${c.sub}" letter-spacing="4">ATHAR</text>
+    ${tagLine}
+  </svg>`;
+}
+
+/* ============================================================
+   GOOGLE MAPS
+   ============================================================ */
+function ensureGoogleMapsLoaded(cb){
+  if (window.google && window.google.maps){ cb(); return; }
+  if (document.getElementById('gmaps-script')){
+    window.__athar_map_cb = window.__athar_map_cb || [];
+    window.__athar_map_cb.push(cb);
+    return;
+  }
+  window.__athar_map_cb = [cb];
+  window.__atharGMapsReady = function(){ (window.__athar_map_cb||[]).forEach(f=>f()); };
+  const s = document.createElement('script');
+  s.id = 'gmaps-script';
+  s.src = `https://maps.googleapis.com/maps/api/js?key=${encodeURIComponent(CONFIG.GOOGLE_MAPS_API_KEY)}&callback=__atharGMapsReady`;
+  s.async = true;
+  s.onerror = () => showToast(STATE.lang==='ar' ? 'فشل تحميل خرائط جوجل — تحقق من المفتاح' : 'Failed to load Google Maps — check your key');
+  document.head.appendChild(s);
+}
+
+function initGoogleMap(){
+  const el = document.getElementById('map-view');
+  if (!el) return;
+  const map = new google.maps.Map(el, {
+    center: { lat: 23.8859, lng: 45.0792 },
+    zoom: 5.3,
+    mapId: 'ATHAR_MAP',
+  });
+  STATE.mapInstance = map;
+  STATE.mapMarkers = [];
+  STATE.spots.forEach(s => {
+    const marker = new google.maps.Marker({
+      position: { lat: s.lat, lng: s.lng },
+      map,
+      title: STATE.lang === 'ar' ? s.name_ar : s.name_en,
+      label: { text: s.icon, fontSize: '16px' },
+    });
+    const iw = new google.maps.InfoWindow({
+      content: `<div style="font-family:inherit;min-width:180px">
+        <div style="font-weight:500;margin-bottom:4px">${escapeHtml(STATE.lang === 'ar' ? s.name_ar : s.name_en)}</div>
+        <div style="font-size:12px;color:#666;margin-bottom:8px">${escapeHtml(s.region)}</div>
+        <button style="background:#3B6D11;color:#EAF3DE;border:none;padding:6px 12px;border-radius:8px;font-weight:500;cursor:pointer;font-family:Cairo,Inter,sans-serif" onclick="window.__atharOpenSpot('${s.id}')">${t('viewDetails')}</button>
+      </div>`
+    });
+    marker.addListener('click', () => iw.open({ anchor: marker, map }));
+    STATE.mapMarkers.push(marker);
+  });
+}
+window.__atharOpenSpot = function(id){
+  STATE.activeSpot = id;
+  render();
+};
+
+/* ============================================================
+   CHAT
+   ============================================================ */
+async function sendChatMessage(text){
+  if (!text || !text.trim()) return;
+  if (!CONFIG.ANTHROPIC_API_KEY){ showToast(t('apiKeyMissing')); return; }
+  STATE.chatMessages.push({ role:'user', content:text.trim() });
+  STATE.chatLoading = true;
+  render();
+  scrollChatToBottom();
+  try{
+    const apiMessages = STATE.chatMessages.filter(m=>!m.error).map(m => ({ role:m.role, content:m.content }));
+    const reply = await callClaude(apiMessages, buildSystemPrompt());
+    STATE.chatMessages.push({ role:'assistant', content: reply });
+  }catch(err){
+    STATE.chatMessages.push({ role:'assistant', content: t('errorGeneric') + (err.message ? ' (' + err.message + ')' : ''), error:true });
+  }finally{
+    STATE.chatLoading = false;
+    render();
+    scrollChatToBottom();
+  }
+}
+function scrollChatToBottom(){
+  requestAnimationFrame(()=>{
+    const el = document.getElementById('chat-messages');
+    if (el) el.scrollTop = el.scrollHeight;
+  });
+}
+
+/* ============================================================
+   EVENT WIRING
+   ============================================================ */
+function wireEvents(){
+  // ---- Setup screen ----
+  const setupForm = document.getElementById('setup-form');
+  if (setupForm){
+    setupForm.addEventListener('submit', e => {
+      e.preventDefault();
+      const anthropic = document.getElementById('in-anthropic').value.trim();
+      if (!anthropic){ STATE.setupError = t('keyRequiredError'); render(); return; }
+      CONFIG.ANTHROPIC_API_KEY = anthropic;
+      CONFIG.GOOGLE_MAPS_API_KEY = document.getElementById('in-maps').value.trim();
+      CONFIG.SUPABASE_URL = document.getElementById('in-sb-url').value.trim();
+      CONFIG.SUPABASE_KEY = document.getElementById('in-sb-key').value.trim();
+      saveConfig();
+      STATE.setupError = '';
+      const session = lsGet('athar_session', null);
+      if (session){ STATE.user = session; refreshSpots(); STATE.bookmarks = loadBookmarks(); STATE.screen = 'app'; }
+      else STATE.screen = 'auth';
+      render();
+    });
+  }
+  bindLangToggle('lang-toggle-setup');
+
+  // ---- Auth screen ----
+  bindLangToggle('lang-toggle-auth');
+  const tabBtns = document.querySelectorAll('.tab-row [data-tab]');
+  tabBtns.forEach(b => b.addEventListener('click', () => { STATE.authTab = b.dataset.tab; STATE.authError=''; render(); }));
+  const switchTabBtn = document.getElementById('switch-auth-tab');
+  if (switchTabBtn) switchTabBtn.addEventListener('click', () => { STATE.authTab = STATE.authTab === 'login' ? 'signup' : 'login'; STATE.authError=''; render(); });
+
+  const authForm = document.getElementById('auth-form');
+  if (authForm){
+    authForm.addEventListener('submit', async e => {
+      e.preventDefault();
+      const email = document.getElementById('in-email').value.trim();
+      const password = document.getElementById('in-password').value;
+      const nameInput = document.getElementById('in-name');
+      const name = nameInput ? nameInput.value.trim() : '';
+      if (!email || !password || (STATE.authTab==='signup' && !name)){ STATE.authError = t('fillAllFields'); render(); return; }
+      const btn = document.getElementById('auth-submit-btn');
+      btn.disabled = true; btn.innerHTML = '<span class="spinner"></span>';
+      try{
+        const user = STATE.authTab === 'login' ? await signIn(email, password) : await signUp(name, email, password);
+        STATE.user = user;
+        persistSession(user);
+        refreshSpots();
+        STATE.bookmarks = loadBookmarks();
+        STATE.authError = '';
+        STATE.screen = 'app';
+        render();
+      }catch(err){
+        STATE.authError = err.message || t('errorGeneric');
+        render();
+      }
+    });
+  }
+  const guestBtn = document.getElementById('guest-btn');
+  if (guestBtn) guestBtn.addEventListener('click', () => {
+    STATE.user = guestUser();
+    persistSession(STATE.user);
+    refreshSpots();
+    STATE.bookmarks = loadBookmarks();
+    STATE.screen = 'app';
+    render();
+  });
+
+  // ---- App shell ----
+  bindLangToggle('lang-toggle-app');
+  const brandHome = document.getElementById('brand-home');
+  if (brandHome) brandHome.addEventListener('click', () => { STATE.tab='discover'; STATE.activeSpot=null; render(); });
+
+  document.querySelectorAll('.tab-item[data-tab]').forEach(b => {
+    b.addEventListener('click', () => {
+      STATE.tab = b.dataset.tab;
+      STATE.userMenuOpen = false;
+      render();
+      if (STATE.tab === 'map') setupMapTab();
+    });
+  });
+
+  const avatarBtn = document.getElementById('avatar-btn');
+  if (avatarBtn) avatarBtn.addEventListener('click', (e) => { e.stopPropagation(); STATE.userMenuOpen = !STATE.userMenuOpen; render(); });
+  const menuLogout = document.getElementById('menu-logout');
+  if (menuLogout) menuLogout.addEventListener('click', doLogout);
+  const menuSettings = document.getElementById('menu-settings');
+  if (menuSettings) menuSettings.addEventListener('click', () => { STATE.screen='setup'; STATE.userMenuOpen=false; render(); });
+  document.addEventListener('click', closeUserMenuOnOutsideClick);
+
+  // ---- Discover ----
+  const searchInput = document.getElementById('search-input');
+  if (searchInput) searchInput.addEventListener('input', e => { STATE.filterText = e.target.value; render(); focusEl('search-input'); });
+  const regionFilter = document.getElementById('region-filter');
+  if (regionFilter) regionFilter.addEventListener('change', e => { STATE.filterRegion = e.target.value; render(); });
+  const categoryFilter = document.getElementById('category-filter');
+  if (categoryFilter) categoryFilter.addEventListener('change', e => { STATE.filterCategory = e.target.value; render(); });
+
+  document.querySelectorAll('[data-open-spot]').forEach(card => {
+    card.addEventListener('click', e => {
+      if (e.target.closest('[data-bookmark]')) return;
+      STATE.activeSpot = card.dataset.openSpot;
+      render();
+    });
+  });
+  document.querySelectorAll('[data-bookmark]').forEach(btn => {
+    btn.addEventListener('click', e => {
+      e.stopPropagation();
+      toggleBookmark(btn.dataset.bookmark);
+    });
+  });
+  const closeSpotModal = document.getElementById('close-spot-modal');
+  const closeSpotModal2 = document.getElementById('close-spot-modal-2');
+  const spotOverlay = document.getElementById('spot-modal-overlay');
+  [closeSpotModal, closeSpotModal2].forEach(b => { if (b) b.addEventListener('click', () => { STATE.activeSpot=null; render(); }); });
+  if (spotOverlay) spotOverlay.addEventListener('click', e => { if (e.target === spotOverlay){ STATE.activeSpot=null; render(); } });
+  const askAiBtn = document.getElementById('ask-ai-about');
+  if (askAiBtn) askAiBtn.addEventListener('click', () => {
+    const spot = STATE.spots.find(s=>s.id===askAiBtn.dataset.spot);
+    const name = STATE.lang==='ar' ? spot.name_ar : spot.name_en;
+    const q = STATE.lang==='ar' ? `أخبرني المزيد عن ${name} ونصائح لزيارته` : `Tell me more about ${name} and tips for visiting`;
+    STATE.activeSpot = null;
+    STATE.tab = 'guide';
+    render();
+    sendChatMessage(q);
+  });
+
+  const fabShare = document.getElementById('fab-share');
+  if (fabShare) fabShare.addEventListener('click', () => { STATE.showShareForm = true; render(); });
+  const cancelShareForm = document.getElementById('cancel-share-form');
+  if (cancelShareForm) cancelShareForm.addEventListener('click', () => { STATE.showShareForm = false; render(); });
+  const shareOverlay = document.getElementById('share-modal-overlay');
+  if (shareOverlay) shareOverlay.addEventListener('click', e => { if (e.target === shareOverlay){ STATE.showShareForm=false; render(); } });
+  const shareForm = document.getElementById('share-spot-form');
+  if (shareForm) shareForm.addEventListener('submit', e => {
+    e.preventDefault();
+    const cat = document.getElementById('f-category').value;
+    const newSpot = {
+      id: 'u_' + Date.now(),
+      name_ar: document.getElementById('f-name-ar').value.trim(),
+      name_en: document.getElementById('f-name-en').value.trim(),
+      region: document.getElementById('f-region').value.trim(),
+      category_ar: t2('ar', cat), category_en: cat,
+      icon: '📍', color: '#3B6D11',
+      hidden_level: parseInt(document.getElementById('f-level').value, 10),
+      lat: parseFloat(document.getElementById('f-lat').value),
+      lng: parseFloat(document.getElementById('f-lng').value),
+      desc_ar: document.getElementById('f-desc-ar').value.trim(),
+      desc_en: document.getElementById('f-desc-en').value.trim(),
+      tip_ar: document.getElementById('f-tip').value.trim(),
+      tip_en: document.getElementById('f-tip').value.trim(),
+      ownerId: STATE.user ? STATE.user.id : null,
+    };
+    const userSpots = loadUserSpots();
+    userSpots.push(newSpot);
+    saveUserSpots(userSpots);
+    refreshSpots();
+    STATE.showShareForm = false;
+    render();
+    showToast(t('toastSpotAdded'));
+  });
+
+  // ---- Map tab ----
+  const gotoSettingsBtn = document.getElementById('goto-settings-btn');
+  if (gotoSettingsBtn) gotoSettingsBtn.addEventListener('click', () => { STATE.screen='setup'; render(); });
+  const locateBtn = document.getElementById('locate-me-btn');
+  if (locateBtn) locateBtn.addEventListener('click', locateUser);
+  if (STATE.tab === 'map') setupMapTab();
+
+  // ---- Chat tab ----
+  const chatForm = document.getElementById('chat-form');
+  if (chatForm) chatForm.addEventListener('submit', e => {
+    e.preventDefault();
+    const input = document.getElementById('chat-input');
+    const val = input.value;
+    input.value = '';
+    sendChatMessage(val);
+  });
+  document.querySelectorAll('[data-suggestion]').forEach(chip => {
+    chip.addEventListener('click', () => sendChatMessage(chip.dataset.suggestion));
+  });
+  scrollChatToBottom();
+
+  // ---- Profile tab ----
+  const profileLangToggle = document.getElementById('profile-lang-toggle');
+  if (profileLangToggle) profileLangToggle.addEventListener('click', toggleLang);
+  const profileApiSettings = document.getElementById('profile-api-settings');
+  if (profileApiSettings) profileApiSettings.addEventListener('click', () => { STATE.screen='setup'; render(); });
+  const profileLogout = document.getElementById('profile-logout');
+  if (profileLogout) profileLogout.addEventListener('click', doLogout);
+}
+
+function focusEl(id){ const el = document.getElementById(id); if (el){ el.focus(); const v=el.value; el.value=''; el.value=v; } }
+
+function bindLangToggle(id){
+  const el = document.getElementById(id);
+  if (el) el.addEventListener('click', toggleLang);
+}
+function toggleLang(){
+  STATE.lang = STATE.lang === 'ar' ? 'en' : 'ar';
+  localStorage.setItem('athar_lang', STATE.lang);
+  render();
+}
+
+function toggleTheme(){
+  STATE.theme = STATE.theme === 'dark' ? 'light' : 'dark';
+  localStorage.setItem('athar_theme', STATE.theme);
+  render();
+}
+
+function closeUserMenuOnOutsideClick(e){
+  if (STATE.userMenuOpen && !e.target.closest('.user-menu')){
+    STATE.userMenuOpen = false;
+    render();
+  }
+}
+
+function toggleBookmark(id){
+  const idx = STATE.bookmarks.indexOf(id);
+  if (idx === -1){ STATE.bookmarks.push(id); showToast(t('toastSaved')); }
+  else { STATE.bookmarks.splice(idx,1); showToast(t('toastRemoved')); }
+  saveBookmarks();
+  render();
+}
+
+function doLogout(){
+  clearSession();
+  STATE.user = null;
+  STATE.userMenuOpen = false;
+  STATE.chatMessages = [];
+  STATE.tab = 'discover';
+  STATE.screen = 'auth';
+  render();
+}
+
+function setupMapTab(){
+  if (!CONFIG.GOOGLE_MAPS_API_KEY) return;
+  ensureGoogleMapsLoaded(() => {
+    setTimeout(initGoogleMap, 0);
+  });
+}
+
+function locateUser(){
+  if (!navigator.geolocation){ showToast('Geolocation not supported'); return; }
+  navigator.geolocation.getCurrentPosition(pos => {
+    const { latitude, longitude } = pos.coords;
+    if (STATE.mapInstance){
+      STATE.mapInstance.setCenter({ lat: latitude, lng: longitude });
+      STATE.mapInstance.setZoom(9);
+      new google.maps.Marker({
+        position: { lat: latitude, lng: longitude },
+        map: STATE.mapInstance,
+        title: 'You',
+        icon: { path: google.maps.SymbolPath.CIRCLE, scale: 8, fillColor:'#FAC775', fillOpacity:1, strokeColor:'#fff', strokeWeight:2 }
+      });
+    }
+    const nearest = STATE.spots.map(s => ({ s, d: haversine(latitude, longitude, s.lat, s.lng) })).sort((a,b)=>a.d-b.d)[0];
+    if (nearest) showToast((STATE.lang==='ar'?'أقرب مكان: ':'Nearest: ') + (STATE.lang==='ar'?nearest.s.name_ar:nearest.s.name_en) + ' (' + localizeNumber(nearest.d.toFixed(0)) + (STATE.lang==='ar'?' كم)':' km)'));
+  }, () => showToast(STATE.lang==='ar' ? 'تعذر تحديد الموقع' : 'Could not get your location'));
+}
+
+/* ============================================================
+   INIT
+   ============================================================ */
+function init(){
+  loadConfig();
+  refreshSpots();
+  const session = lsGet('athar_session', null);
+  if (!CONFIG.ANTHROPIC_API_KEY){
+    STATE.screen = 'setup';
+  } else if (session){
+    STATE.user = session;
+    STATE.bookmarks = loadBookmarks();
+    STATE.screen = 'app';
+  } else {
+    STATE.screen = 'auth';
+  }
+  render();
+}
+init();
+</script>
+</body>
+</html>
